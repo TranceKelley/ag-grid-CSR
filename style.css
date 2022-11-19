@@ -1,3 +1,107 @@
-h1, p {
-  font-family: Lato;
+h1,
+p {
+  font-family: Roboto;
+}
+
+.example-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  flex: 1 1 0px;
+}
+.actions {
+  font-size: 30px;
+  color: #2b6bdd;
+}
+.my-stats {
+  text-align: left;
+  margin: auto;
+  padding: 0 0 0 10%;
+  width: 210px;
+  border: 1px 1px solid;
+  color: #181d1f;
+}
+.my-stats h1 {
+  border-top: 1px darkgrey solid;
+  padding: 5px;
+}
+.my-stats p span {
+  color: #2b6bdd;
+}
+button,
+input {
+  margin: 12px 4px;
+  border-radius: 5px;
+  border: 1px solid #2b6bdd;
+  padding: 0 15px;
+  color: #2b6bdd;
+  background: #ffffff;
+  cursor: pointer;
+  line-height: 32px;
+}
+.button-group input {
+  float: right;
+  width: 300px;
+  margin-right: 0;
+  border-color: lightgrey;
+  color: grey;
+}
+.button-group button:nth-child(1) {
+  margin-left: 0;
+}
+
+.ag-theme-alpine .ag-row {
+  font-size: 12px;
+}
+
+
+span.badge{
+  color: black;
+  display: inline-block;
+  background-color: #E4E9EF;
+  border-radius: 10px;
+  height: 22px;
+  margin: 10px -10px;
+  padding: 0 13px;
+  overflow: auto;
+  line-height: 22px;
+}
+
+span.badge.InProgress,
+span.badge.InProcess,
+span.badge.Working,
+span.badge.Paid
+{
+  color: black;
+  background-color: #C2FFBD;
+}
+
+span.badge.PreInvoice,
+span.badge.Viewed,
+span.badge.WithAdvisor,
+span.badge.Pending
+{
+  color: black;
+  background-color: #FFA87D;
+}
+
+span.badge.CheckedIn,
+span.badge.NotDispatched,
+span.badge.Warranty
+{
+  color: white;
+  background-color: #96BDFF ;
+}
+span.badge.Completed,
+span.badge.Closed
+{
+  color: black;
+  background-color: #D6C2FF;
+}
+span.badge.Default{
+  display:none;
 }
