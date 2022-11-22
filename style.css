@@ -77,7 +77,7 @@ span.badge.Working,
 span.badge.Paid
 {
   color: black;
-  background-color: #C2FFBD;
+  background-color: #FFD6C2;
 }
 
 span.badge.PreInvoice,
@@ -104,4 +104,9 @@ span.badge.Closed
 }
 span.badge.Default{
   display:none;
+}
+
+.ag-row-group span{
+  font-weight:bold;
+  font-size:14px;
 }

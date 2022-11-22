@@ -1305,6 +1305,14 @@ function AllStatus(params) {
   );
 }
 
+function TimeRenderer(params) {
+    return (
+        <span className= "ApptTime">
+            {params.value}
+        </span>
+    );
+  }
+
   const createROColDefs = () => {
     return [
       { field: 'RONumber', 
@@ -1438,9 +1446,11 @@ function AllStatus(params) {
           
           { field: 'AppointmentTime',
             cellStyle: { color: '#2B6BDD' },
-            rowGroup: true, hide: true,
+            rowGroup: true, 
+            hide: true,
             sortable: true, 
             sort: 'asc',
+            cellRenderer: TimeRenderer,
             },
           { field: 'AppointmentDate', 
             hide:false,
@@ -1452,6 +1462,7 @@ function AllStatus(params) {
           },
           { field: 'ApppointmentStatus', 
             hide:false,
+            rowGroup: true, 
             headerName: 'Status',
             cellRenderer: AllStatus,
             filter: 'agSetColumnFilter',
@@ -1537,8 +1548,8 @@ function AllStatus(params) {
         resizable: true,
         sortable: true,
         enableValue: false,
-        enableRowGroup: false,
-        enablePivot: false,
+        enableRowGroup: true,
+        enablePivot: true,
     
   };
 
