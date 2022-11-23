@@ -1641,11 +1641,11 @@ function CustomStatsToolPanel(params) {
   return (
       <div className="my-stats">
           <h3>My day</h3>
-          <h1>12 Open ROs</h1>
-
-          <p> <span>5</span> In Process</p>
-          <p> <span>5</span> Pre Invoice</p>
-          <p> <span>5</span> Cashier</p>
+          <h1></h1>
+          <div class="chart">
+              
+          </div>
+          
           <h1>5 Closed ROs</h1>
           <p> Customer Pay Total <b>$1,289.00</b></p>
           <h1>2 Warranty ROs to be closed</h1>
