@@ -6,6 +6,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import './style.css';
 
+
 const App = () => {
   const gridRef = useRef();
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
@@ -1331,6 +1332,7 @@ function TimeRenderer(params) {
               menuTabs: ['filterMenuTab'],
               valueParser: 'ROStatus',
               cellRenderer: AllStatus, 
+              chartDataType: 'catagory' ,
           },
           { field: 'CustomerName', 
               headerName: 'Customer', 
@@ -1340,6 +1342,7 @@ function TimeRenderer(params) {
           { field: 'Advisor', 
               filter: 'agSetColumnFilter', 
               menuTabs: ['filterMenuTab'],
+              chartDataType: "catagory"
               //rowGroup: true, hide: true 
           },
           { field: 'PromisedTime', 
@@ -1381,7 +1384,8 @@ function TimeRenderer(params) {
                   align: 'center' 
               }, 
               filter: 'agSetColumnFilter',
-              menuTabs: ['filterMenuTab']
+              menuTabs: ['filterMenuTab'],
+              chartDataType: 'series'
           },    
           { field: 'TotalDue',
               cellStyle: { 
@@ -1637,15 +1641,17 @@ function CustomStatsToolPanel(params) {
   return (
       <div className="my-stats">
           <h3>My day</h3>
-          <h1>12 Open ROs</h1>
-
-          <p> <span>5</span> In Process</p>
-          <p> <span>5</span> Pre Invoice</p>
-          <p> <span>5</span> Cashier</p>
+          <h1></h1>
+          <div class="chart">
+              
+          </div>
+          
           <h1>5 Closed ROs</h1>
           <p> Customer Pay Total <b>$1,289.00</b></p>
           <h1>2 Warranty ROs to be closed</h1>
           <p> Comission Pay Total <b>$793.00</b></p>
+
+          <p id="chart"></p>
 
           {params.value}
       </div>
@@ -1691,6 +1697,7 @@ function CustomStatsToolPanel(params) {
     };
     gridRef.current.api.setFilterModel(hardcodedFilter);
   }, []);
+
 
 return (
   <div style={containerStyle}>
@@ -1751,6 +1758,8 @@ return (
           //statusBar={statusBar}
           sideBar={sideBar}
           groupDisplayType={'groupRows'}
+          enableRangeSelection={true}
+          enableCharts={true}
           >
           </AgGridReact>
           </div>
@@ -1760,4 +1769,7 @@ return (
 
 };
 
+
+
 render(<App />, document.getElementById('root'));
+
