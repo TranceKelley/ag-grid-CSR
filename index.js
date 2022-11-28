@@ -191,7 +191,7 @@ function TimeRenderer(params) {
           },
           { field: 'ApppointmentStatus', 
             hide:false,
-            rowGroup: true, 
+            //rowGroup: true, 
             headerName: 'Status',
             cellRenderer: AllStatus,
             filter: 'agSetColumnFilter',
