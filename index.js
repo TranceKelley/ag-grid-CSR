@@ -224,7 +224,8 @@ function TimeRenderer(params) {
 
   const createCashierColDefs= () => {
     return [
-        { field: 'RONumber', 
+        {   field: 'RONumber', 
+            headerName: 'RO',
             hide:false,
             cellStyle: { color: '#2B6BDD' },
             pinned: 'left',
@@ -234,12 +235,33 @@ function TimeRenderer(params) {
             filter: 'agTextColumnFilter',
             menuTabs: ['filterMenuTab']
         },
-        { field: 'AppointmentTime', hide:false  },
-        { field: 'AppointmentDate', hide:false },
-        { field: 'TransportationType', hide:false },
-        { field: 'ApppointmentStatus', hide:false },
-        { field: 'Payment Status', hide:false },
-        { field: 'TotalDue',
+        {   field: 'CustomerName', 
+            headerName: 'Customer',    
+            hide:false  
+        },
+        {   field: 'ApppointmentStatus',
+            headerName: 'Status',
+            cellRenderer: AllStatus, 
+            hide:false 
+        },
+        {   field: 'AppointmentTime', 
+            headerName: 'Appt Time',
+            hide:false  
+        },
+        {   field: 'AppointmentDate', 
+            headerName: 'Appt Date',
+            hide:true 
+        },
+        {   field: 'TransportationType', 
+            headerName: 'Transport',
+            hide:false 
+        },
+        {   field: 'Payment Status', 
+            cellRenderer: AllStatus,
+            rowGroup: true,   
+            hide:true 
+        },
+        {   field: 'TotalDue',
             cellStyle: { 
                 textAlign:'right', 
                 maxWidth: 83,
@@ -305,6 +327,7 @@ const onROView = useCallback(() => {
 
 const onCashierView = useCallback(() => {
     gridRef.current.api.setColumnDefs(createCashierColDefs());
+    gridRef.current.api.expandAll();
 }, []);
 
 const [columnDefs, setColumnDefs] = useState(createROColDefs());
