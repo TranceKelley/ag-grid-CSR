@@ -580,6 +580,12 @@ return (
                       Not Dispatched
                   </button>
                   <button
+                      onClick={onROView }
+                      title="My Repair Orders"
+                  >
+                      My Repair Orders
+                  </button>
+                  <button
                       onClick={restoreFromHardCodedMyROs}
                       title="show all RO that have not been dispatched"
                   >
@@ -591,12 +597,7 @@ return (
                   >
                       Appointments
                   </button>
-                  <button
-                      onClick={onROView }
-                      title="Repair Orders"
-                  >
-                      Repair Orders
-                  </button>
+                  
                   <button
                       onClick={onSMView }
                       title="Service Manager View"
