@@ -67,8 +67,124 @@ function TimeRenderer(params) {
           { field: 'Advisor', 
               filter: 'agSetColumnFilter', 
               menuTabs: ['filterMenuTab'],
-              chartDataType: "catagory"
-              //rowGroup: true, hide: true 
+              chartDataType: "catagory",
+              hide: true 
+          },
+          { field: 'PromisedTime', 
+              headerName: 'Promised',
+              maxWidth: 130, 
+              minWidth: 130,
+              suppressMenu: true, 
+          },
+          { field: 'Vehicle',
+              valueGetter: p => {
+                  return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
+              },
+          filter: 'agTextColumnFilter',
+          menuTabs: ['filterMenuTab'] 
+          },
+          { field: 'ShortVIN',
+          headerName: 'VIN', 
+          tooltipField: 'VIN',
+          maxWidth: 100, 
+          minWidth: 100,
+          filter: 'agTextColumnFilter',
+          menuTabs: ['filterMenuTab'] 
+          },
+          { field: 'Model', 
+              hide:true 
+          },
+          { field: 'HangTag', 
+              headerName: 'Tag',
+              resizable: false,
+              maxWidth: 80, 
+              filter: 'agTextColumnFilter',
+              menuTabs: ['filterMenuTab'] 
+          },
+          { field: 'PayType', 
+              headerName: 'Pay',
+              resizable: false, 
+              maxWidth: 60, 
+              cellStyle: { 
+                  align: 'center' 
+              }, 
+              filter: 'agSetColumnFilter',
+              menuTabs: ['filterMenuTab'],
+              chartDataType: 'series'
+          },    
+          { field: 'TotalDue',
+              cellStyle: { 
+                  textAlign:'right', 
+                  maxWidth: 83,
+                  minWidth: 53,
+              },
+              filter: false,
+              suppressMenu: true,
+              sortable: false,
+              resizable: false,
+          },
+          { field: 'Tech', hide:true },
+          { field: 'TechStatus', hide:true,
+          cellRenderer: AllStatus, },
+          { field: 'PartsPerson', hide:true },
+          { field: 'PartsStatus', hide:true,
+          cellRenderer: AllStatus, },
+          { field: 'TransportationType', hide:true },
+          { field: 'AppointmentID', hide:true },
+          { field: 'AppointmentDate', hide:true },
+          { field: 'ApppointmentStatus', hide:true,
+          cellRenderer: AllStatus, },
+          { field: 'Payment Status', hide:true,
+          cellRenderer: AllStatus, },
+          { field: 'Actions', 
+              headerName: '', 
+              maxWidth: 52,
+              minWidth: 52, 
+              pinned: 'right',
+              lockPinned: true,
+              cellRenderer: MyRenderer,
+              cellStyle: { 
+                  textAlign:'center', 
+                  color: '#2B6BDD', 
+                  fontSize: '20px',
+                  cellPadding: '0'},
+              filter: false,
+              suppressMenu: true,
+              sortable: false,
+              lockVisible: true
+          }
+  ];};
+
+  const createSMColDefs = () => {
+    return [
+      { field: 'RONumber', 
+              cellStyle: { color: '#2B6BDD' },
+              headerName: 'RO',
+              pinned: 'left',
+              maxWidth: 100,
+              minWidth: 100, 
+              lockPinned: true,
+              filter: 'agTextColumnFilter',
+              menuTabs: ['filterMenuTab']
+          },
+          { field: 'ROStatus', 
+              headerName: 'Status', 
+              filter: 'agSetColumnFilter',
+              menuTabs: ['filterMenuTab'],
+              valueParser: 'ROStatus',
+              cellRenderer: AllStatus, 
+              chartDataType: 'catagory' ,
+          },
+          { field: 'CustomerName', 
+              headerName: 'Customer', 
+              filter: 'agTextColumnFilter',
+              menuTabs: ['filterMenuTab'] 
+          },
+          { field: 'Advisor', 
+              filter: 'agSetColumnFilter', 
+              menuTabs: ['filterMenuTab'],
+              chartDataType: "catagory",
+              rowGroup: true, hide: true 
           },
           { field: 'PromisedTime', 
               headerName: 'Promised',
@@ -330,6 +446,11 @@ const onCashierView = useCallback(() => {
     gridRef.current.api.expandAll();
 }, []);
 
+const onSMView = useCallback(() => {
+    gridRef.current.api.setColumnDefs(createSMColDefs());
+    gridRef.current.api.expandAll();
+}, []);
+
 const [columnDefs, setColumnDefs] = useState(createROColDefs());
 
 // --- Quick Filter 
@@ -475,6 +596,12 @@ return (
                       title="Repair Orders"
                   >
                       Repair Orders
+                  </button>
+                  <button
+                      onClick={onSMView }
+                      title="Service Manager View"
+                  >
+                      Service Manager View
                   </button>
                   <button
                       onClick={onCashierView }
