@@ -322,7 +322,7 @@ const [columnDefs, setColumnDefs] = useState(createROColDefs());
   const sideBar = {
     toolPanels: [
     {   id: 'customStats',
-        labelDefault: 'May Day',
+        labelDefault: 'My Day',
         labelKey: 'customStats',
         iconKey: 'chart',
         toolPanel: CustomStatsToolPanel,
