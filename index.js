@@ -384,43 +384,87 @@ function CustomStatsToolPanel(params) {
 
 // --- Filter Buttons Consts ------
 
-  const clearFilters = useCallback(() => {
-    gridRef.current.api.setFilterModel(null);
-  }, []);
 
-  const restoreFromHardCodedND = useCallback(() => {
+const changeView = useCallback((myValue) => {
+
+if (myValue.includes('Not Dispatched')) {
+    var hardcodedFilter = {
+        ROStatus: {
+            type: 'set',
+            values: ['Not Dispatched'],
+            }
+        };
+    gridRef.current.api.setFilterModel(hardcodedFilter);
+  }
+
+  if (myValue.includes('My Customer Pay ROs')) {
+
+    var hardcodedFilter = {
+        Advisor: {
+            type: 'set',
+            values: ['Eric Sanders'],
+            },
+        PayType: {
+            type: 'set',
+            values: ['C'],
+        }
+    };
+    gridRef.current.api.setFilterModel(hardcodedFilter);
+    
+  }
+
+  if (myValue.includes('Cashier View')) {
+    gridRef.current.api.setColumnDefs(createCashierColDefs());
+  }
+
+  if (myValue.includes('Appt View')) {
+    gridRef.current.api.setColumnDefs(AppointmentsView());
+    gridRef.current.api.expandAll();
+  }
+
+  if (myValue.includes('Repair Orders')) {
+    gridRef.current.api.setColumnDefs(createROColDefs());
+  }
+
+}, []);
+
+const clearFilters = useCallback(() => {
+gridRef.current.api.setFilterModel(null);
+}, []);
+
+const restoreFromHardCodedND = useCallback(() => {
     var hardcodedFilter = {
     ROStatus: {
         type: 'set',
         values: ['Not Dispatched'],
     }
-    };
-    gridRef.current.api.setFilterModel(hardcodedFilter);
-  }, []);
+};
+gridRef.current.api.setFilterModel(hardcodedFilter);
+}, []);
 
-  const restoreFromHardCodedW = useCallback(() => {
-    var hardcodedFilter = {
-        PayType: {
-        type: 'set',
-        values: ['W'],
-    }
-    };
-    gridRef.current.api.setFilterModel(hardcodedFilter);
-  }, []);
-
-  const restoreFromHardCodedMyROs = useCallback(() => {
-    var hardcodedFilter = {
-        Advisor: {
-        type: 'set',
-        values: ['Eric Sanders'],
-    },
+const restoreFromHardCodedW = useCallback(() => {
+var hardcodedFilter = {
     PayType: {
-        type: 'set',
-        values: ['C'],
-    }
-    };
-    gridRef.current.api.setFilterModel(hardcodedFilter);
-  }, []);
+    type: 'set',
+    values: ['W'],
+}
+};
+gridRef.current.api.setFilterModel(hardcodedFilter);
+}, []);
+
+const restoreFromHardCodedMyROs = useCallback(() => {
+var hardcodedFilter = {
+    Advisor: {
+    type: 'set',
+    values: ['Eric Sanders'],
+},
+PayType: {
+    type: 'set',
+    values: ['C'],
+}
+};
+gridRef.current.api.setFilterModel(hardcodedFilter);
+}, []);
 
 
 return (
@@ -428,8 +472,15 @@ return (
       <div className="example-wrapper">
           <div>
               <div className="button-group">
+                  <select  onChange={e=>changeView(e.target.value)}> 
+                    <option value="Repair Orders">Repair Orders</option>
+                    <option value="Not Dispatched">Not Dispatched</option>
+                    <option value="My Customer Pay ROs">My Customer Pay ROs</option>
+                    <option value="Cashier View">Cashier View</option>
+                    <option value="Appt View">Appointment View</option>
+                  </select>
               
-                  <button
+                  {/* <button
                       onClick={restoreFromHardCodedND}
                       title="show all RO that have not been dispatched"
                   >
@@ -458,7 +509,7 @@ return (
                       title="Cashier"
                   >
                       Cashier
-                  </button>
+                  </button> */}
                   <button onClick={clearFilters}>Reset Filters</button>
                   <input
                       type="text"
