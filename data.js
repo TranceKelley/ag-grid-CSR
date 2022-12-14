@@ -107,7 +107,7 @@ export function getData() {
       Advisor: 'Eric Sanders',
       PromisedTime: '12/05 - 05:30',
       HangTag: '324',
-      PayType: 'C',
+      PayType: 'C/W',
       TotalDue: '190.52',
       ShortVIN: '...4G65Y0',
       VIN: '2FCNWR5NXNG4G65Y0',
