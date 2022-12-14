@@ -33,7 +33,8 @@ p {
   color: #2b6bdd;
 }
 button,
-input {
+input,
+select {
   margin: 12px 4px;
   border-radius: 5px;
   border: 1px solid #2b6bdd;
@@ -41,6 +42,7 @@ input {
   color: #2b6bdd;
   background: #ffffff;
   cursor: pointer;
+  height: 32px;
   line-height: 32px;
 }
 .button-group input {
@@ -58,11 +60,10 @@ input {
   font-size: 12px;
 }
 
-
-span.badge{
+span.badge {
   color: black;
   display: inline-block;
-  background-color: #E4E9EF;
+  background-color: #e4e9ef;
   border-radius: 10px;
   height: 22px;
   margin: 10px -10px;
@@ -74,47 +75,43 @@ span.badge{
 span.badge.InProgress,
 span.badge.InProcess,
 span.badge.Working,
-span.badge.Paid
-{
+span.badge.Paid {
   color: black;
-  background-color: #FFD6C2;
+  background-color: #ffd6c2;
 }
 
 span.badge.PreInvoice,
 span.badge.Viewed,
 span.badge.WithAdvisor,
-span.badge.Pending
-{
+span.badge.Pending {
   color: black;
-  background-color: #FFA87D;
+  background-color: #ffa87d;
 }
 
 span.badge.CheckedIn,
 span.badge.NotDispatched,
-span.badge.Warranty
-{
+span.badge.Warranty {
   color: white;
-  background-color: #96BDFF ;
+  background-color: #96bdff;
 }
 span.badge.Completed,
-span.badge.Closed
-{
+span.badge.Closed {
   color: black;
-  background-color: #D6C2FF;
+  background-color: #d6c2ff;
 }
-span.badge.Default{
-  display:none;
-}
-
-.ag-row-group span{
-  font-weight:bold;
-  font-size:14px;
+span.badge.Default {
+  display: none;
 }
 
-.chart{
-  width:100%;
-  height:250px;
-  background-image: url( https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/Chart%20Example.png);
+.ag-row-group span {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.chart {
+  width: 100%;
+  height: 250px;
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/Chart%20Example.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
