@@ -116,3 +116,25 @@ span.badge.Default {
   background-repeat: no-repeat;
   background-blend-mode: multiply;
 }
+
+.overlay {
+  height: 1049px;
+  width: 100%;
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ServiceManager-WithAdvisor.png);
+  background-size: auto 100%;
+  background-color: lightgray;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  top: 0;
+  margin: auto;
+  left: 100%;
+
+  width: 0;
+}
+
+.show{
+ left:0;
+ transition: all .5s ease;
+ width: 100%;
+}

@@ -23,6 +23,20 @@ function MyRenderer(params) {
   );
 }
 
+const PullUpRO = () => {
+    let overlayRO = document.querySelector('.overlay');
+    overlayRO.classList.toggle("show");
+},
+
+function ROLink(params) {
+    return (
+        <span className="ROLink" onClick={PullUpRO}>
+            
+            {params.value}
+        </span>
+    );
+  }
+
 function AllStatus(params) {
   return (
       <span className= {'badge ' + params.value.split(" ").join("")}>
@@ -49,7 +63,8 @@ function TimeRenderer(params) {
               minWidth: 100, 
               lockPinned: true,
               filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab']
+              menuTabs: ['filterMenuTab'],
+              cellRenderer: ROLink,
           },
           { field: 'ROStatus', 
               headerName: 'Status', 
@@ -520,6 +535,8 @@ return (
               
               </div>
           </div>
+
+          
       
           <div className="ag-theme-alpine" style={{ height: 800 }}>
           <AgGridReact
@@ -539,6 +556,7 @@ return (
           </AgGridReact>
           </div>
       </div>
+      <div class="overlay" onClick={PullUpRO}></div>
   </div>
 );
 
