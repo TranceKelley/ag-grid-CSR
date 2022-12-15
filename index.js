@@ -24,12 +24,13 @@ function MyRenderer(params) {
 }
 
 const PullUpRO = () => {
- //TODO pull up Toggle class to show RO Page
+    let overlayRO = document.querySelector('.overlay');
+    overlayRO.classList.toggle("show");
 },
 
 function ROLink(params) {
     return (
-        <span className="ROLInk" onClick={PullUpRO}>
+        <span className="ROLink" onClick={PullUpRO}>
             
             {params.value}
         </span>
@@ -534,6 +535,8 @@ return (
               
               </div>
           </div>
+
+          
       
           <div className="ag-theme-alpine" style={{ height: 800 }}>
           <AgGridReact
@@ -553,6 +556,7 @@ return (
           </AgGridReact>
           </div>
       </div>
+      <div class="overlay" onClick={PullUpRO}></div>
   </div>
 );
 
