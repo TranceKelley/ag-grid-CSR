@@ -6,286 +6,20 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import './style.css';
 import { getData } from './data';
+import PopupCellRenderer from './popupCellRenderer';
+import customerPopup from './customerPopup.js';
+import vehiclePopup from './vehiclePopup.js';
+import StatusTooltip from './tooltipStatus.js';
 
+const toolTipValueGetter = (params) => ({ value: params.value });
 
 const App = () => {
-  const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
-  const data = useMemo(() => getData(), []);
-  const [rowData] = useState(data, []);
+    const gridRef = useRef();
+    const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+    const data = useMemo(() => getData(), []);
+    const [rowData] = useState(data, []);
 
-function MyRenderer(params) {
-  return (
-      <span className="my-renderer">
-          ...
-          {params.value}
-      </span>
-  );
-}
-
-const PullUpRO = () => {
-    let overlayRO = document.querySelector('.overlay');
-    overlayRO.classList.toggle("show");
-},
-
-function ROLink(params) {
-    return (
-        <span className="ROLink" onClick={PullUpRO}>
-            
-            {params.value}
-        </span>
-    );
-  }
-
-function AllStatus(params) {
-  return (
-      <span className= {'badge ' + params.value.split(" ").join("")}>
-          {params.value}
-      </span>
-  );
-}
-
-function TimeRenderer(params) {
-    return (
-        <span className= "ApptTime">
-            {params.value}
-        </span>
-    );
-  }
-
-  const createROColDefs = () => {
-    return [
-      { field: 'RONumber', 
-              cellStyle: { color: '#2B6BDD' },
-              headerName: 'RO',
-              pinned: 'left',
-              maxWidth: 100,
-              minWidth: 100, 
-              lockPinned: true,
-              filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab'],
-              cellRenderer: ROLink,
-          },
-          { field: 'ROStatus', 
-              headerName: 'Status', 
-              filter: 'agSetColumnFilter',
-              menuTabs: ['filterMenuTab'],
-              valueParser: 'ROStatus',
-              cellRenderer: AllStatus, 
-              chartDataType: 'catagory' ,
-          },
-          { field: 'CustomerName', 
-              headerName: 'Customer', 
-              filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab'] 
-          },
-          { field: 'Advisor', 
-              filter: 'agSetColumnFilter', 
-              menuTabs: ['filterMenuTab'],
-              chartDataType: "catagory",
-              hide: true,
-          },
-          { field: 'PromisedTime', 
-              headerName: 'Promised',
-              maxWidth: 130, 
-              minWidth: 130,
-              suppressMenu: true, 
-          },
-          { field: 'Vehicle',
-              valueGetter: p => {
-                  return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
-              },
-          filter: 'agTextColumnFilter',
-          menuTabs: ['filterMenuTab'] 
-          },
-          { field: 'ShortVIN',
-          headerName: 'VIN', 
-          tooltipField: 'VIN',
-          maxWidth: 100, 
-          minWidth: 100,
-          filter: 'agTextColumnFilter',
-          menuTabs: ['filterMenuTab'] 
-          },
-          { field: 'Model', 
-              hide:true 
-          },
-          { field: 'HangTag', 
-              headerName: 'Tag',
-              resizable: false,
-              maxWidth: 80, 
-              filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab'] 
-          },
-          { field: 'PayType', 
-              headerName: 'Pay',
-              resizable: false, 
-              maxWidth: 60, 
-              cellStyle: { 
-                  align: 'center' 
-              }, 
-              filter: 'agSetColumnFilter',
-              menuTabs: ['filterMenuTab'],
-              chartDataType: 'series'
-          },    
-          { field: 'TotalDue',
-              cellStyle: { 
-                  textAlign:'right', 
-                  maxWidth: 83,
-                  minWidth: 53,
-              },
-              filter: false,
-              suppressMenu: true,
-              sortable: false,
-              resizable: false,
-          },
-          { field: 'Tech', hide:true },
-          { field: 'TechStatus', hide:true,
-          cellRenderer: AllStatus, },
-          { field: 'PartsPerson', hide:true },
-          { field: 'PartsStatus', hide:true,
-          cellRenderer: AllStatus, },
-          { field: 'TransportationType', hide:true },
-          { field: 'AppointmentID', hide:true },
-          { field: 'AppointmentDate', hide:true },
-          { field: 'ApppointmentStatus', hide:true,
-          cellRenderer: AllStatus, },
-          { field: 'Payment Status', hide:true,
-          cellRenderer: AllStatus, },
-          { field: 'Actions', 
-              headerName: '', 
-              maxWidth: 52,
-              minWidth: 52, 
-              pinned: 'right',
-              lockPinned: true,
-              cellRenderer: MyRenderer,
-              cellStyle: { 
-                  textAlign:'center', 
-                  color: '#2B6BDD', 
-                  fontSize: '20px',
-                  cellPadding: '0'},
-              filter: false,
-              suppressMenu: true,
-              sortable: false,
-              lockVisible: true
-          }
-  ];};
-
-  const AppointmentsView = () => {
-      return [
-          { field: 'CustomerName', hide:false,
-              cellStyle: { color: '#2B6BDD' },
-              maxWidth: 200,
-              minWidth: 200, 
-              lockPinned: true,
-              filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab']
-          },
-          { field: 'Vehicle',
-            valueGetter: p => {
-              return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
-            },
-            filter: 'agTextColumnFilter',
-            menuTabs: ['filterMenuTab'] 
-          },
-          
-          { field: 'AppointmentTime',
-            cellStyle: { color: '#2B6BDD' },
-            rowGroup: true, 
-            hide: true,
-            sortable: true, 
-            sort: 'asc',
-            cellRenderer: TimeRenderer,
-            },
-          { field: 'AppointmentDate', 
-            hide:false,
-            headerName: 'Date',
-          },
-          { field: 'TransportationType', 
-            hide:false,
-            headerName: 'Transportation', 
-          },
-          { field: 'ApppointmentStatus', 
-            hide:false,
-            //rowGroup: true, 
-            headerName: 'Status',
-            cellRenderer: AllStatus,
-            filter: 'agSetColumnFilter',
-            menuTabs: ['filterMenuTab'], 
-          },
-          { field: 'Advisor', 
-          filter: 'agSetColumnFilter', 
-          menuTabs: ['filterMenuTab'],
-          //rowGroup: true, hide: true 
-      },
-          { field: 'Actions', 
-              headerName: '', 
-              maxWidth: 52,
-              minWidth: 52, 
-              pinned: 'right',
-              lockPinned: true,
-              cellRenderer: MyRenderer,
-              cellStyle: { 
-                  textAlign:'center', 
-                  color: '#2B6BDD', 
-                  fontSize: '20px',
-                  cellPadding: '0'},
-              filter: false,
-              suppressMenu: true,
-              sortable: false,
-              lockVisible: true
-          }
-      ];
-  };
-
-  const createCashierColDefs= () => {
-    return [
-        { field: 'RONumber', 
-            hide:false,
-            cellStyle: { color: '#2B6BDD' },
-            pinned: 'left',
-            maxWidth: 100,
-            minWidth: 100, 
-            lockPinned: true,
-            filter: 'agTextColumnFilter',
-            menuTabs: ['filterMenuTab']
-        },
-        { field: 'AppointmentTime', hide:false  },
-        { field: 'AppointmentDate', hide:false },
-        { field: 'TransportationType', hide:false },
-        { field: 'ApppointmentStatus', hide:false },
-        { field: 'Payment Status', hide:false },
-        { field: 'TotalDue',
-            cellStyle: { 
-                textAlign:'right', 
-                maxWidth: 83,
-                minWidth: 53,
-            },
-            filter: false,
-            suppressMenu: true,
-            sortable: false,
-            resizable: false,
-        },
-        {   field: 'Actions', 
-            headerName: '', 
-            maxWidth: 52,
-            minWidth: 52, 
-            pinned: 'right',
-            lockPinned: true,
-            cellRenderer: MyRenderer,
-            cellStyle: { 
-                textAlign:'center', 
-                color: '#2B6BDD', 
-                fontSize: '20px',
-                cellPadding: '0'},
-            filter: false,
-            suppressMenu: true,
-            sortable: false,
-            lockVisible: true
-        }
-    ];
-  };
-
-  const defaultColDef = {
+    const defaultColDef = {
         flex: 1,
         minWidth: 100,
         filter: false,
@@ -294,195 +28,551 @@ function TimeRenderer(params) {
         enableValue: false,
         enableRowGroup: true,
         enablePivot: true,
-    
-  };
+        suppressClickEdit: true,
+    };
 
-  const gridOptions = {
-    //columnDefs: columnDefs,
-    defaultColDef: defaultColDef,
-    animateRows: true,
-    autoGroupColumnDef: {
-      cellRendererPerams: {
-        suppressCount: true,
-      }
+    const gridOptions = {
+        //columnDefs: columnDefs,
+        defaultColDef: defaultColDef,
+        animateRows: true,
+        autoGroupColumnDef: {
+            cellRendererPerams: {
+                suppressCount: true,
+            }
 
+        }
+    };
+
+    const PullUpRO = () => {
+        let overlayRO = document.querySelector('.overlay');
+        overlayRO.classList.toggle("show");
     }
-  };
 
-  const onApptView = useCallback(() => {
-    gridRef.current.api.setColumnDefs(AppointmentsView());
-    gridRef.current.api.expandAll();
-  }, []);
+    function ROLink(params) {
+        return (
+            <span className="ROLink" onClick={PullUpRO}> 
+                {params.value}
+            </span>
+        );
+    }
 
-const onROView = useCallback(() => {
-    gridRef.current.api.setColumnDefs(createROColDefs());
-}, []);
+    function AllStatus(params) {
+        return (
+            <span className= {'badge ' + params.value.split(" ").join("")}>
+                {params.value}
+            </span>
+        );
+    }
 
-const onCashierView = useCallback(() => {
-    gridRef.current.api.setColumnDefs(createCashierColDefs());
-}, []);
+    function TimeRenderer(params) {
+        return (
+            <span className= "ApptTime">
+                {params.value}
+            </span>
+        );
+    }
 
-const [columnDefs, setColumnDefs] = useState(createROColDefs());
+    const createROColDefs = () => {
+        return [
+            { field: 'RONumber', 
+                cellStyle: { color: '#2B6BDD' },
+                headerName: 'RO',
+                pinned: 'left',
+                maxWidth: 100,
+                minWidth: 100, 
+                lockPinned: true,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: ROLink,
+                
+            },
+            { field: 'ROStatus', 
+                headerName: 'Status', 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                valueParser: 'ROStatus',
+                cellRenderer: AllStatus, 
+                tooltipComponent: StatusTooltip,
+                tooltipValueGetter: toolTipValueGetter,
+            },
+            { field: 'CustomerName', 
+                headerName: 'Customer', 
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: customerPopup,
+                editable: false,
+                colId: 'customer',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'customer'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+                
+            },
+            { field: 'Advisor', 
+                filter: 'agSetColumnFilter', 
+                menuTabs: ['filterMenuTab'],
+                chartDataType: "catagory",
+                hide: true,
+            },
+            { field: 'PromisedTime', 
+                headerName: 'Promised',
+                maxWidth: 130, 
+                minWidth: 130,
+                suppressMenu: true, 
+            },
+            { field: 'Vehicle',
+                valueGetter: p => {
+                    return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
+                },
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: vehiclePopup,
+                editable: false,
+                colId: 'vehicle',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'vehicle'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+            },
+            { field: 'ShortVIN',
+                headerName: 'VIN', 
+                tooltipField: 'VIN',
+                maxWidth: 100, 
+                minWidth: 100,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'] 
+            },
+            { field: 'Model', 
+                hide:true 
+            },
+            { field: 'HangTag', 
+                headerName: 'Tag',
+                resizable: false,
+                maxWidth: 80, 
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'] 
+            },
+            { field: 'PayType', 
+                headerName: 'Pay',
+                resizable: false, 
+                maxWidth: 60, 
+                cellStyle: { 
+                    align: 'center' 
+                }, 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                chartDataType: 'series'
+            },    
+            { field: 'TotalDue',
+                cellStyle: { 
+                    textAlign:'right', 
+                    maxWidth: 83,
+                    minWidth: 53,
+                },
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                resizable: false,
+            },
+            { field: 'Tech', 
+                hide:true 
+            },
+            { field: 'TechStatus', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'PartsPerson', 
+                hide:true 
+            },
+            { field: 'PartsStatus', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'TransportationType', 
+                hide:true 
+            },
+            { field: 'AppointmentID', 
+                hide:true 
+            },
+            { field: 'AppointmentDate', 
+                hide:true 
+            },
+            { field: 'ApppointmentStatus', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'Payment Status', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'Actions',  
+                headerName: '', 
+                maxWidth: 45,
+                minWidth: 45, 
+                pinned: 'right',
+                lockPinned: true,
 
-// --- Quick Filter 
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                lockVisible: true,
+                cellEditorPopup: false,
+                cellRenderer: PopupCellRenderer,
+                editable: false,
+                colId: 'action',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'action'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+                
+            }
+    ];};
 
-  const onFilterTextBoxChanged = useCallback(() => {
-    gridRef.current.api.setQuickFilter(
-    document.getElementById('filter-text-box').value
-    );
-}, []);
-
-  // SIDE BAR -----------------
-
-  const sideBar = {
-    toolPanels: [
-    {   id: 'customStats',
-        labelDefault: 'My Day',
-        labelKey: 'customStats',
-        iconKey: 'chart',
-        toolPanel: CustomStatsToolPanel,
-        minWidth: 180,
-        maxWidth: 400,
-        width: 250
-    },
-    {   id: 'columns',
-        labelDefault: 'Columns',
-        labelKey: 'columns',
-        iconKey: 'columns',
-        toolPanel: 'agColumnsToolPanel',
-        toolPanelParams: {
-            //suppressRowGroups: true,
-            suppressValues: true,
-            suppressPivots: true,
-            suppressPivotMode: true,
-            suppressColumnFilter: true,
-            suppressColumnSelectAll: true,
-            suppressColumnExpandAll: true,
+    const AppointmentsView = () => {
+        return [
+            { field: 'CustomerName', hide:false,
+                cellStyle: { color: '#2B6BDD' },
+                maxWidth: 200,
+                minWidth: 200, 
+                lockPinned: true,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab']
+            },
+            { field: 'Vehicle',
+                valueGetter: p => {
+                return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
+                },
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'] 
+            },
+            
+            { field: 'AppointmentTime',
+                cellStyle: { color: '#2B6BDD' },
+                rowGroup: true, 
+                hide: true,
+                sortable: true, 
+                sort: 'asc',
+                cellRenderer: TimeRenderer,
+                },
+            { field: 'AppointmentDate', 
+                hide:false,
+                headerName: 'Date',
+            },
+            { field: 'TransportationType', 
+                hide:false,
+                headerName: 'Transportation', 
+            },
+            { field: 'ApppointmentStatus', 
+                hide:false,
+                headerName: 'Status',
+                cellRenderer: AllStatus,
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'], 
+            },
+            { field: 'Advisor', 
+                filter: 'agSetColumnFilter', 
+                menuTabs: ['filterMenuTab'],
         },
-        minWidth: 180,
-        maxWidth: 400,
-        width: 250
-    },
-    {
-        id: 'filters',
-        labelDefault: 'Filters',
-        labelKey: 'filters',
-        iconKey: 'filter',
-        toolPanel: 'agFiltersToolPanel',
-        minWidth: 180,
-        maxWidth: 400,
-        width: 250
-    }],
-    position: 'left',
-    defaultToolPanel: 'customStats'
-},
+            { field: 'Actions', 
+                headerName: '', 
+                maxWidth: 45,
+                minWidth: 45, 
+                pinned: 'right',
+                lockPinned: true,
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                lockVisible: true,
+                cellRenderer: PopupCellRenderer,
+                editable: false,
+                colId: 'action',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'action'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+            }
+        ];
+    };
 
-function CustomStatsToolPanel(params) {
-  return (
-      <div className="my-stats">
-          <h3>My day</h3>
-          <h1></h1>
-          <div class="chart">
-          </div>
-          
-          <h1>5 Closed ROs</h1>
-          <p> Customer Pay Total <b>$1,289.00</b></p>
-          <h1>2 Warranty ROs to be closed</h1>
-          <p> Comission Pay Total <b>$793.00</b></p>
-          <button onClick={restoreFromHardCodedW}>
-            Warranty Lines
-          </button>
-      </div>
-  );
-}
+    const createCashierColDefs= () => {
+        return [
+            { field: 'RONumber', 
+                hide:false,
+                cellStyle: { color: '#2B6BDD' },
+                pinned: 'left',
+                maxWidth: 100,
+                minWidth: 100, 
+                lockPinned: true,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab']
+            },
+            { field: 'Payment Status', 
+                hide:false,
+                cellRenderer: AllStatus 
+            },
+            { field: 'AppointmentTime', hide:false  },
+            { field: 'AppointmentDate', hide:false },
+            { field: 'TransportationType', hide:false },
+            { field: 'ApppointmentStatus', hide:false },
+            { field: 'TotalDue',
+                cellStyle: { 
+                    textAlign:'right', 
+                    maxWidth: 83,
+                    minWidth: 53,
+                },
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                resizable: false,
+            },
+            {   field: 'Actions', 
+                headerName: '', 
+                maxWidth: 45,
+                minWidth: 45, 
+                pinned: 'right',
+                lockPinned: true,
+                suppressMenu: true,
+                sortable: false,
+                lockVisible: true,
+                cellRenderer: PopupCellRenderer,
+                editable: false,
+                colId: 'action',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'action'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+            }
+        ];
+    };
+
+    const onApptView = useCallback(() => {
+        gridRef.current.api.setColumnDefs(AppointmentsView());
+        gridRef.current.api.expandAll();
+    }, []);
+
+    const onROView = useCallback(() => {
+        gridRef.current.api.setColumnDefs(createROColDefs());
+    }, []);
+
+    const onCashierView = useCallback(() => {
+        gridRef.current.api.setColumnDefs(createCashierColDefs());
+    }, []);
+
+    const [columnDefs, setColumnDefs] = useState(createROColDefs());
+
+    // --- Quick Filter 
+
+    const onFilterTextBoxChanged = useCallback(() => {
+        gridRef.current.api.setQuickFilter(
+        document.getElementById('filter-text-box').value
+        );
+    }, []);
+
+    // SIDE BAR -----------------
+
+    const sideBar = {
+        toolPanels: [
+        {   id: 'customStats',
+            labelDefault: 'My Day',
+            labelKey: 'customStats',
+            iconKey: 'chart',
+            toolPanel: CustomStatsToolPanel,
+            minWidth: 180,
+            maxWidth: 400,
+            width: 250
+        },
+        {   id: 'columns',
+            labelDefault: 'Columns',
+            labelKey: 'columns',
+            iconKey: 'columns',
+            toolPanel: 'agColumnsToolPanel',
+            toolPanelParams: {
+                //suppressRowGroups: true,
+                suppressValues: true,
+                suppressPivots: true,
+                suppressPivotMode: true,
+                suppressColumnFilter: true,
+                suppressColumnSelectAll: true,
+                suppressColumnExpandAll: true,
+            },
+            minWidth: 180,
+            maxWidth: 400,
+            width: 250
+        },
+        {
+            id: 'filters',
+            labelDefault: 'Filters',
+            labelKey: 'filters',
+            iconKey: 'filter',
+            toolPanel: 'agFiltersToolPanel',
+            minWidth: 180,
+            maxWidth: 400,
+            width: 250
+        }],
+        position: 'left',
+        defaultToolPanel: 'customStats'
+    },
+
+    function CustomStatsToolPanel(params) {
+        return (
+            <div className="my-stats">
+                <h3>My day</h3>
+                <h1></h1>
+                <div class="chart">
+                </div>
+                
+                <h1>5 Closed ROs</h1>
+                <p> Customer Pay Total <b>$1,289.00</b></p>
+                <h1>2 Warranty ROs to be closed</h1>
+                <p> Comission Pay Total <b>$793.00</b></p>
+                <button onClick={restoreFromHardCodedW}>
+                    Warranty Lines
+                </button>
+            </div>
+        );
+    }
 
 // --- Filter Buttons Consts ------
 
 
-const changeView = useCallback((myValue) => {
+    const changeView = useCallback((myValue) => {
 
-if (myValue.includes('Not Dispatched')) {
-    var hardcodedFilter = {
-        ROStatus: {
-            type: 'set',
-            values: ['Not Dispatched'],
+        if (myValue.includes('Not Dispatched')) {
+            var hardcodedFilter = {
+                ROStatus: {
+                    type: 'set',
+                    values: ['Not Dispatched'],
+                    }
+                };
+            gridRef.current.api.setFilterModel(hardcodedFilter);
+        }
+
+        if (myValue.includes('My Customer Pay ROs')) {
+            var hardcodedFilter = {
+                Advisor: {
+                    type: 'set',
+                    values: ['Eric Sanders'],
+                    },
+                PayType: {
+                    type: 'set',
+                    values: ['C'],
+                }
+            };
+            gridRef.current.api.setFilterModel(hardcodedFilter);
+        
+        }
+
+        if (myValue.includes('Cashier View')) {
+            gridRef.current.api.setColumnDefs(createCashierColDefs());
+        }
+
+        if (myValue.includes('Appt View')) {
+            gridRef.current.api.setColumnDefs(AppointmentsView());
+            gridRef.current.api.expandAll();
+        }
+
+        if (myValue.includes('Repair Orders')) {
+            gridRef.current.api.setColumnDefs(createROColDefs());
+        }
+
+        if (myValue.includes('All ROs')) {
+            gridRef.current.api.setFilterModel(null);
+        }
+
+    }, []);
+
+    const clearFilters = useCallback(() => {
+        gridRef.current.api.setFilterModel(null);
+    }, []);
+
+    const restoreFromHardCodedND = useCallback(() => {
+        var hardcodedFilter = {
+            ROStatus: {
+                type: 'set',
+                values: ['Not Dispatched'],
             }
         };
-    gridRef.current.api.setFilterModel(hardcodedFilter);
-  }
+        gridRef.current.api.setFilterModel(hardcodedFilter);
+    }, []);
 
-  if (myValue.includes('My Customer Pay ROs')) {
+    const restoreFromHardCodedW = useCallback(() => {
+            var hardcodedFilter = {
+                PayType: {
+                type: 'set',
+                values: ['W'],
+            }
+        };
+        gridRef.current.api.setFilterModel(hardcodedFilter);
+    }, []);
 
-    var hardcodedFilter = {
-        Advisor: {
-            type: 'set',
-            values: ['Eric Sanders'],
+    const restoreFromHardCodedMyROs = useCallback(() => {
+        var hardcodedFilter = {
+            Advisor: {
+                type: 'set',
+                values: ['Eric Sanders'],
             },
         PayType: {
             type: 'set',
             values: ['C'],
-        }
-    };
-    gridRef.current.api.setFilterModel(hardcodedFilter);
-    
-  }
-
-  if (myValue.includes('Cashier View')) {
-    gridRef.current.api.setColumnDefs(createCashierColDefs());
-  }
-
-  if (myValue.includes('Appt View')) {
-    gridRef.current.api.setColumnDefs(AppointmentsView());
-    gridRef.current.api.expandAll();
-  }
-
-  if (myValue.includes('Repair Orders')) {
-    gridRef.current.api.setColumnDefs(createROColDefs());
-  }
-
-  if (myValue.includes('All ROs')) {
-    gridRef.current.api.setFilterModel(null);
-  }
-
-}, []);
-
-const clearFilters = useCallback(() => {
-gridRef.current.api.setFilterModel(null);
-}, []);
-
-const restoreFromHardCodedND = useCallback(() => {
-    var hardcodedFilter = {
-    ROStatus: {
-        type: 'set',
-        values: ['Not Dispatched'],
-    }
-};
-gridRef.current.api.setFilterModel(hardcodedFilter);
-}, []);
-
-const restoreFromHardCodedW = useCallback(() => {
-var hardcodedFilter = {
-    PayType: {
-    type: 'set',
-    values: ['W'],
-}
-};
-gridRef.current.api.setFilterModel(hardcodedFilter);
-}, []);
-
-const restoreFromHardCodedMyROs = useCallback(() => {
-var hardcodedFilter = {
-    Advisor: {
-    type: 'set',
-    values: ['Eric Sanders'],
-},
-PayType: {
-    type: 'set',
-    values: ['C'],
-}
-};
-gridRef.current.api.setFilterModel(hardcodedFilter);
-}, []);
+            }
+        };
+        gridRef.current.api.setFilterModel(hardcodedFilter);
+    }, []);
 
 
 return (
@@ -491,7 +581,7 @@ return (
           <div>
               <div className="button-group">
                   <select  onChange={e=>changeView(e.target.value)}> 
-                    <option value="Repair Orders">My Repair Orders</option>
+                    <option value="Repair Orders">Repair Orders</option>
                     <option value="Cashier View">Cashier View</option>
                     <option value="Appt View">Appointment View</option>
                   </select>
@@ -502,37 +592,6 @@ return (
                     <option value="My Customer Pay ROs">My Customer Pay ROs</option>
                   </select>
               
-              
-                  {/* <button
-                      onClick={restoreFromHardCodedND}
-                      title="show all RO that have not been dispatched"
-                  >
-                      Not Dispatched
-                  </button>
-                  <button
-                      onClick={restoreFromHardCodedMyROs}
-                      title="show all RO that have not been dispatched"
-                  >
-                      My Customer Pay ROs
-                  </button>
-                  <button
-                      onClick={onApptView }
-                      title="Appointments"
-                  >
-                      Appointments
-                  </button>
-                  <button
-                      onClick={onROView }
-                      title="Repair Orders"
-                  >
-                      Repair Orders
-                  </button>
-                  <button
-                      onClick={onCashierView }
-                      title="Cashier"
-                  >
-                      Cashier
-                  </button> */}
                   <button onClick={clearFilters}>Reset Filters</button>
                   <input
                       type="text"
@@ -560,6 +619,8 @@ return (
           groupDisplayType={'groupRows'}
           enableRangeSelection={true}
           enableCharts={true}
+          tooltipShowDelay={0}
+          tooltipHideDelay={2000}
           >
           </AgGridReact>
           </div>
