@@ -213,7 +213,8 @@ span.badge.Default {
 .custom-tooltip p:first-of-type {
   font-weight: bold;
 }
-.droptarget {
+.droptarget,
+.ROLink {
   cursor: pointer;
 }
 .droptarget:hover {
