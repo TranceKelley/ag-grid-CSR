@@ -156,14 +156,15 @@ span.badge.Default {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
-  left:-130px
+  border-radius: 0.4rem;
+  left: -130px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 5px;
 }
 
 .menu-item:hover {
@@ -186,16 +187,15 @@ span.badge.Default {
   text-decoration: none;
   white-space: nowrap;
   border: 0;
-  
 }
-.overflow{
+.overflow {
   font-size: 20px;
-    alignment:center; 
-    color: #2B6BDD;
-    Padding: 0;
-    margin: 0 -4px;
-    letter-spacing: -2px;
-    cursor: pointer;
+  alignment: center;
+  color: #2b6bdd;
+  padding: 0;
+  margin: 0 -4px;
+  letter-spacing: -2px;
+  cursor: pointer;
 }
 
 .custom-tooltip {
@@ -213,9 +213,9 @@ span.badge.Default {
 .custom-tooltip p:first-of-type {
   font-weight: bold;
 }
-.droptarget{
+.droptarget {
   cursor: pointer;
 }
-.droptarget:hover{
+.droptarget:hover {
   color: #2b6bdd;
 }
