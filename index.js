@@ -82,8 +82,8 @@ function TimeRenderer(params) {
           { field: 'Advisor', 
               filter: 'agSetColumnFilter', 
               menuTabs: ['filterMenuTab'],
-              chartDataType: "catagory"
-              //rowGroup: true, hide: true 
+              chartDataType: "catagory",
+              hide: true,
           },
           { field: 'PromisedTime', 
               headerName: 'Promised',
@@ -389,10 +389,9 @@ function CustomStatsToolPanel(params) {
           <p> Customer Pay Total <b>$1,289.00</b></p>
           <h1>2 Warranty ROs to be closed</h1>
           <p> Comission Pay Total <b>$793.00</b></p>
-
-          <p id="chart"></p>
-
-          {params.value}
+          <button onClick={restoreFromHardCodedW}>
+            Warranty Lines
+          </button>
       </div>
   );
 }
@@ -439,6 +438,10 @@ if (myValue.includes('Not Dispatched')) {
 
   if (myValue.includes('Repair Orders')) {
     gridRef.current.api.setColumnDefs(createROColDefs());
+  }
+
+  if (myValue.includes('All ROs')) {
+    gridRef.current.api.setFilterModel(null);
   }
 
 }, []);
@@ -488,12 +491,17 @@ return (
           <div>
               <div className="button-group">
                   <select  onChange={e=>changeView(e.target.value)}> 
-                    <option value="Repair Orders">Repair Orders</option>
-                    <option value="Not Dispatched">Not Dispatched</option>
-                    <option value="My Customer Pay ROs">My Customer Pay ROs</option>
+                    <option value="Repair Orders">My Repair Orders</option>
                     <option value="Cashier View">Cashier View</option>
                     <option value="Appt View">Appointment View</option>
                   </select>
+
+                  <select  onChange={e=>changeView(e.target.value)}> 
+                  <option value="All ROs">All Repair Orders</option>
+                    <option value="Not Dispatched">Not Dispatched</option>
+                    <option value="My Customer Pay ROs">My Customer Pay ROs</option>
+                  </select>
+              
               
                   {/* <button
                       onClick={restoreFromHardCodedND}
