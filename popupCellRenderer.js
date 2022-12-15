@@ -67,8 +67,7 @@ export default class PopupCellRenderer {
       const option = options[i];
       item.classList.add('menu-item');
       item.setAttribute('data-action', option.toLowerCase());
-      item.innerText =
-        option == 'Created' ? `${option} New Row` : `${option}`;
+      item.innerText = `${option}`;
       item.addEventListener('click', this.menuItemClickHandler.bind(this));
       menu.appendChild(item);
     }
@@ -79,16 +78,17 @@ export default class PopupCellRenderer {
   menuItemClickHandler(event) {
     this.togglePopup();
     const action = event.target.dataset.action;
-    if (action === 'create') {
+    if (action === 'Edit') {
       this.params.api.applyTransaction({
         add: [{}],
       });
     }
-    if (action === 'delete') {
-      this.params.api.applyTransaction({ remove: [this.params.data] });
+    if (action === 'edit ro') {
+      let overlayRO = document.querySelector('.overlay');
+      overlayRO.classList.toggle("show");
     }
 
-    if (action === 'edit') {
+    if (action === 'make') {
       this.params.api.startEditingCell({
         rowIndex: this.params.rowIndex,
         colKey: 'make',

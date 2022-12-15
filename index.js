@@ -48,6 +48,12 @@ const App = () => {
         overlayRO.classList.toggle("show");
     }
 
+    const modalPop = (props) => {
+        let modal = document.querySelector('.modal');
+        //var str = props.replace(/\s+/g, '-').toLowerCase();
+        modal.classList.remove('edit-customer', 'edit-vehicle');
+    }
+
     function ROLink(params) {
         return (
             <span className="ROLink" onClick={PullUpRO}> 
@@ -614,7 +620,6 @@ return (
           defaultColDef={defaultColDef}
           enableRangeSelection={true}
           rowSelection={'multiple'}
-          //statusBar={statusBar}
           sideBar={sideBar}
           groupDisplayType={'groupRows'}
           enableRangeSelection={true}
@@ -626,6 +631,7 @@ return (
           </div>
       </div>
       <div class="overlay" onClick={PullUpRO}></div>
+      <div class="modal" onClick={modalPop}></div>
   </div>
 );
 

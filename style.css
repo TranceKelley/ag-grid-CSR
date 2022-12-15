@@ -220,3 +220,29 @@ span.badge.Default {
 .droptarget:hover {
   color: #2b6bdd;
 }
+
+.modal {
+  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  top: 0;
+  margin: auto;
+  width: 0;
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+.modal.edit-customer {
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ModalCustomerInfo.png);
+  display: block;
+  backdrop-filter: blur(3px);
+}
+
+.modal.edit-vehicle {
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ModalVehicleInfo.png);
+  display: block;
+  backdrop-filter: blur(3px);
+}

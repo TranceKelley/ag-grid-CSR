@@ -73,7 +73,7 @@ export default class customerPopup {
 
       const option = options[i];
       item.classList.add('menu-item');
-      item.setAttribute('data-action', option.toLowerCase());
+      item.setAttribute('data-action', option.replace(/\s+/g, '-').toLowerCase());
       item.innerText = option == 'Created' ? `${option} New Row` : `${option}`;
       item.addEventListener('click', this.menuItemClickHandler.bind(this));
       menu.appendChild(item);
@@ -85,21 +85,9 @@ export default class customerPopup {
   menuItemClickHandler(event) {
     this.togglePopup();
     const action = event.target.dataset.action;
-    if (action === 'create') {
-      this.params.api.applyTransaction({
-        add: [{}],
-      });
-    }
-    if (action === 'delete') {
-      this.params.api.applyTransaction({ remove: [this.params.data] });
-    }
 
-    if (action === 'edit') {
-      this.params.api.startEditingCell({
-        rowIndex: this.params.rowIndex,
-        colKey: 'make',
-      });
-    }
+    let modalPop = document.querySelector('.modal');
+    modalPop.classList.toggle(action);
   }
 
   getGui() {
