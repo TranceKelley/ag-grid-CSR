@@ -23,6 +23,19 @@ function MyRenderer(params) {
   );
 }
 
+const PullUpRO = () => {
+ //TODO pull up Toggle class to show RO Page
+},
+
+function ROLink(params) {
+    return (
+        <span className="ROLInk" onClick={PullUpRO}>
+            
+            {params.value}
+        </span>
+    );
+  }
+
 function AllStatus(params) {
   return (
       <span className= {'badge ' + params.value.split(" ").join("")}>
@@ -49,7 +62,8 @@ function TimeRenderer(params) {
               minWidth: 100, 
               lockPinned: true,
               filter: 'agTextColumnFilter',
-              menuTabs: ['filterMenuTab']
+              menuTabs: ['filterMenuTab'],
+              cellRenderer: ROLink,
           },
           { field: 'ROStatus', 
               headerName: 'Status', 
