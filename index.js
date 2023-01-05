@@ -239,7 +239,7 @@ const App = () => {
                 minWidth: 45, 
                 pinned: 'right',
                 lockPinned: true,
-
+                suppressColumnsToolPanel: true,
                 filter: false,
                 suppressMenu: true,
                 sortable: false,
@@ -323,6 +323,7 @@ const App = () => {
                 sortable: false,
                 lockVisible: true,
                 cellRenderer: PopupCellRenderer,
+                suppressColumnsToolPanel: true,
                 editable: false,
                 colId: 'action',
                 onCellClicked: (params) => {
@@ -387,6 +388,7 @@ const App = () => {
                 cellRenderer: PopupCellRenderer,
                 editable: false,
                 colId: 'action',
+                suppressColumnsToolPanel: true,
                 onCellClicked: (params) => {
                     if (
                     params.event.target.dataset.action == 'toggle' &&
