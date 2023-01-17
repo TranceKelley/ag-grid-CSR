@@ -326,12 +326,7 @@ const App = () => {
                 },
                 
             },
-            { field: 'Advisor', 
-                filter: 'agSetColumnFilter', 
-                menuTabs: ['filterMenuTab'],
-                chartDataType: "catagory",
-                hide: true,
-            },
+
             { field: 'PromisedTime', 
                 hide: true,
                 headerName: 'Promised',
@@ -413,6 +408,12 @@ const App = () => {
             { field: 'TechStatus', 
                 hide:false,
                 cellRenderer: AllStatus, 
+            },
+            { field: 'Advisor', 
+            filter: 'agSetColumnFilter', 
+            menuTabs: ['filterMenuTab'],
+            chartDataType: "catagory",
+            hide: false,
             },
 
             { field: 'TransportationType', 
