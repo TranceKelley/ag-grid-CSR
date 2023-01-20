@@ -48,6 +48,12 @@ const App = () => {
         overlayRO.classList.toggle("show");
     }
 
+    const modalPop = (props) => {
+        let modal = document.querySelector('.modal');
+        //var str = props.replace(/\s+/g, '-').toLowerCase();
+        modal.classList.remove('edit-customer', 'edit-vehicle');
+    }
+
     function ROLink(params) {
         return (
             <span className="ROLink" onClick={PullUpRO}> 
@@ -233,7 +239,207 @@ const App = () => {
                 minWidth: 45, 
                 pinned: 'right',
                 lockPinned: true,
+                suppressColumnsToolPanel: true,
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                lockVisible: true,
+                cellEditorPopup: false,
+                cellRenderer: PopupCellRenderer,
+                editable: false,
+                colId: 'action',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'action'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+                
+            }
+    ];};
 
+    const createCPColDefs = () => {
+        return [
+            { field: 'RONumber', 
+                cellStyle: { color: '#2B6BDD' },
+                headerName: 'RO',
+                pinned: 'left',
+                maxWidth: 100,
+                minWidth: 100, 
+                lockPinned: true,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: ROLink,
+                
+            },
+            
+            { field: 'PartsStatus', 
+                hide:false,
+                cellRenderer: AllStatus, 
+                rowGroup: true, 
+                hide: true,
+                sort: 'desc',
+            },
+            { field: 'PartsPerson',
+             hide:false, 
+            },
+            { field: 'ROStatus', 
+            hide:true,
+                headerName: 'RO Status', 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                valueParser: 'ROStatus',
+                cellRenderer: AllStatus, 
+                tooltipComponent: StatusTooltip,
+                tooltipValueGetter: toolTipValueGetter,
+            },
+            { field: 'CustomerName', 
+                headerName: 'Customer', 
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: customerPopup,
+                editable: false,
+                colId: 'customer',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'customer'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+                
+            },
+
+            { field: 'PromisedTime', 
+                hide: true,
+                headerName: 'Promised',
+                maxWidth: 130, 
+                minWidth: 130,
+                suppressMenu: true, 
+            },
+            { field: 'Vehicle',
+                valueGetter: p => {
+                    return p.data.Year + ' ' + p.data.Make + ' ' + p.data.Model ;
+                },
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                cellRenderer: vehiclePopup,
+                editable: false,
+                colId: 'vehicle',
+                onCellClicked: (params) => {
+                    if (
+                    params.event.target.dataset.action == 'toggle' &&
+                    params.column.getColId() == 'vehicle'
+                    ) {
+                    const cellRendererInstances = params.api.getCellRendererInstances({
+                        rowNodes: [params.node],
+                        columns: [params.column],
+                    });
+                    if (cellRendererInstances.length > 0) {
+                        const instance = cellRendererInstances[0];
+                        instance.togglePopup();
+                    }
+                    }
+                },
+            },
+            { field: 'ShortVIN',
+                headerName: 'VIN', 
+                tooltipField: 'VIN',
+                maxWidth: 100, 
+                minWidth: 100,
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'] 
+            },
+            { field: 'Model', 
+                hide:true 
+            },
+            { field: 'HangTag', 
+                headerName: 'Tag',
+                resizable: false,
+                maxWidth: 80, 
+                filter: 'agTextColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                hide: true
+            },
+            { field: 'PayType', 
+                headerName: 'Pay',
+                hide:true,
+                resizable: false, 
+                maxWidth: 60, 
+                cellStyle: { 
+                    align: 'center' 
+                }, 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                chartDataType: 'series'
+            },    
+            { field: 'TotalDue',
+            hide:true,
+                cellStyle: { 
+                    textAlign:'right', 
+                    maxWidth: 83,
+                    minWidth: 53,
+                },
+                filter: false,
+                suppressMenu: true,
+                sortable: false,
+                resizable: false,
+            },
+            { field: 'Tech', 
+                hide:false 
+            },
+            { field: 'TechStatus', 
+                hide:false,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'Advisor', 
+            filter: 'agSetColumnFilter', 
+            menuTabs: ['filterMenuTab'],
+            chartDataType: "catagory",
+            hide: false,
+            },
+
+            { field: 'TransportationType', 
+                hide:false 
+            },
+            { field: 'AppointmentID', 
+                hide:true 
+            },
+            { field: 'AppointmentDate', 
+                hide:true 
+            },
+            { field: 'ApppointmentStatus', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'Payment Status', 
+                hide:true,
+                cellRenderer: AllStatus, 
+            },
+            { field: 'Actions',  
+                headerName: '', 
+                maxWidth: 45,
+                minWidth: 45, 
+                pinned: 'right',
+                lockPinned: true,
+                suppressColumnsToolPanel: true,
                 filter: false,
                 suppressMenu: true,
                 sortable: false,
@@ -317,6 +523,7 @@ const App = () => {
                 sortable: false,
                 lockVisible: true,
                 cellRenderer: PopupCellRenderer,
+                suppressColumnsToolPanel: true,
                 editable: false,
                 colId: 'action',
                 onCellClicked: (params) => {
@@ -381,6 +588,7 @@ const App = () => {
                 cellRenderer: PopupCellRenderer,
                 editable: false,
                 colId: 'action',
+                suppressColumnsToolPanel: true,
                 onCellClicked: (params) => {
                     if (
                     params.event.target.dataset.action == 'toggle' &&
@@ -411,6 +619,11 @@ const App = () => {
 
     const onCashierView = useCallback(() => {
         gridRef.current.api.setColumnDefs(createCashierColDefs());
+    }, []);
+
+    const onCounterView = useCallback(() => {
+        gridRef.current.api.setColumnDefs(createPCColDefs());
+        gridRef.current.api.expandAll();
     }, []);
 
     const [columnDefs, setColumnDefs] = useState(createROColDefs());
@@ -530,6 +743,11 @@ const App = () => {
             gridRef.current.api.setColumnDefs(createROColDefs());
         }
 
+        if (myValue.includes('Counter Person  View')) {
+            gridRef.current.api.setColumnDefs(createCPColDefs());
+            gridRef.current.api.expandAll();
+        }
+
         if (myValue.includes('All ROs')) {
             gridRef.current.api.setFilterModel(null);
         }
@@ -582,6 +800,7 @@ return (
               <div className="button-group">
                   <select  onChange={e=>changeView(e.target.value)}> 
                     <option value="Repair Orders">Repair Orders</option>
+                    <option value="Counter Person  View">Parts Counter</option>
                     <option value="Cashier View">Cashier View</option>
                     <option value="Appt View">Appointment View</option>
                   </select>
@@ -614,18 +833,19 @@ return (
           defaultColDef={defaultColDef}
           enableRangeSelection={true}
           rowSelection={'multiple'}
-          //statusBar={statusBar}
           sideBar={sideBar}
           groupDisplayType={'groupRows'}
           enableRangeSelection={true}
           enableCharts={true}
           tooltipShowDelay={0}
           tooltipHideDelay={2000}
+          groupRowsSticky={true}
           >
           </AgGridReact>
           </div>
       </div>
       <div class="overlay" onClick={PullUpRO}></div>
+      <div class="modal" onClick={modalPop}></div>
   </div>
 );
 
