@@ -107,7 +107,7 @@ span.badge.Default {
 .chart {
   width: 100%;
   height: 250px;
-  background-image: url(http://www.trancekelley.com/CAImages/Chart%20Example.png);
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/myImages/main/Chart%20Example.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
@@ -116,7 +116,7 @@ span.badge.Default {
 .overlay {
   height: 1049px;
   width: 100%;
-  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ServiceManager-WithAdvisor.png);
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/myImages/main/ServiceManager-WithAdvisor.png);
   background-size: auto 100%;
   background-color: lightgray;
   background-repeat: no-repeat;
@@ -236,13 +236,13 @@ span.badge.Default {
 }
 
 .modal.edit-customer {
-  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ModalCustomerInfo.png);
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/myImages/main/ModalCustomerInfo.png);
   display: block;
   backdrop-filter: blur(3px);
 }
 
 .modal.edit-vehicle {
-  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/ModalVehicleInfo.png);
+  background-image: url(https://raw.githubusercontent.com/TranceKelley/myImages/main/ModalVehicleInfo.png);
   display: block;
   backdrop-filter: blur(3px);
 }

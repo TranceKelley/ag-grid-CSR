@@ -1,4 +1,4 @@
-import React, { useCallback,useMemo,useState, useRef } from 'react';
+import React, { Component, useCallback,useMemo,useState, useRef } from 'react';
 import { render } from 'react-dom';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-enterprise';
@@ -10,6 +10,7 @@ import PopupCellRenderer from './popupCellRenderer';
 import customerPopup from './customerPopup.js';
 import vehiclePopup from './vehiclePopup.js';
 import StatusTooltip from './tooltipStatus.js';
+import IframeComponent from './IframeComponent';
 
 const toolTipValueGetter = (params) => ({ value: params.value });
 
@@ -844,7 +845,11 @@ return (
           </AgGridReact>
           </div>
       </div>
-      <div class="overlay" onClick={PullUpRO}></div>
+      <div class="overlay" onClick={PullUpRO}>
+      <div>
+        <IframeComponent src="#" height="100%" width="45%"/>
+      </div>
+      </div>
       <div class="modal" onClick={modalPop}></div>
   </div>
 );
