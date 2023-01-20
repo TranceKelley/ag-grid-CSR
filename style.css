@@ -107,7 +107,7 @@ span.badge.Default {
 .chart {
   width: 100%;
   height: 250px;
-  background-image: url(https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/Chart%20Example.png);
+  background-image: url(http://www.trancekelley.com/CAImages/Chart%20Example.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
