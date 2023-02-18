@@ -71,7 +71,8 @@ span.badge {
 span.badge.InProgress,
 span.badge.InProcess,
 span.badge.Working,
-span.badge.Paid {
+span.badge.Paid,
+span.badge.Corrected {
   color: black;
   background-color: #ffd6c2;
 }
@@ -84,14 +85,22 @@ span.badge.Pending {
   background-color: #ffa87d;
 }
 
+span.badge.Rejected,
+span.badge.Discrepancy {
+  color: white;
+  background-color: red;
+}
+
 span.badge.CheckedIn,
 span.badge.NotDispatched,
-span.badge.Warranty {
+span.badge.Warranty,
+span.badge.Returned{
   color: white;
   background-color: #96bdff;
 }
 span.badge.Completed,
-span.badge.Closed {
+span.badge.Closed,
+span.badge.Reconciled{
   color: black;
   background-color: #d6c2ff;
 }

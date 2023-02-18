@@ -1,5 +1,5 @@
 import React, {useCallback,useMemo,useState, useRef } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from "react-dom/client";
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-enterprise';
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -173,6 +173,9 @@ const App = () => {
             { field: 'Model', 
                 hide:true 
             },
+            { field: 'Make', 
+                hide:true 
+            },
             { field: 'HangTag', 
                 headerName: 'Tag',
                 resizable: false,
@@ -229,10 +232,17 @@ const App = () => {
                 hide:true,
                 cellRenderer: AllStatus, 
             },
-            { field: 'Payment Status', 
+            { field: 'PaymentStatus', 
                 hide:true,
                 cellRenderer: AllStatus, 
             },
+            { field: 'WarrantyStatus', 
+                hide:true,
+                cellRenderer: AllStatus, 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab']
+             },
+
             { field: 'Actions',  
                 headerName: '', 
                 maxWidth: 45,
@@ -821,8 +831,6 @@ return (
               
               </div>
           </div>
-
-          
       
           <div className="ag-theme-alpine" style={{ height: 800 }}>
           <AgGridReact
@@ -854,6 +862,7 @@ return (
 };
 
 
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
 
-render(<App />, document.getElementById('root'));
 
