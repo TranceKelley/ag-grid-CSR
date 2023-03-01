@@ -69,39 +69,54 @@ span.badge {
 }
 
 span.badge.InProgress,
+span.badge.PreInvoice,
 span.badge.InProcess,
 span.badge.Working,
 span.badge.Paid,
-span.badge.Corrected {
-  color: black;
-  background-color: #ffd6c2;
+span.badge.WorkFinished,
+span.badge.SubmitedtoOEM,
+span.badge.CheckedIn  {
+  color: #16171A;
+  background-color: #83F279;
 }
 
-span.badge.PreInvoice,
+span.badge.Corrected {
+  color: white;
+  background-color: #1a5915;
+}
+
+
 span.badge.Viewed,
-span.badge.WithAdvisor,
-span.badge.Pending {
+span.badge.WithAdvisor {
   color: black;
   background-color: #ffa87d;
 }
 
-span.badge.Rejected,
 span.badge.Discrepancy {
+  color: black;
+  background-color: #ff7575;
+}
+
+span.badge.Rejected {
   color: white;
-  background-color: red;
+  background-color: #dd2b2b;
 }
 
 span.badge.CheckedIn,
-span.badge.NotDispatched,
-span.badge.Warranty,
-span.badge.Returned{
+span.badge.Warranty {
   color: white;
   background-color: #96bdff;
 }
+
+span.badge.Returned {
+  color: white;
+  background-color: #dd2b2b;
+}
+
 span.badge.Completed,
-span.badge.Closed,
-span.badge.Reconciled{
-  color: black;
+span.badge.Finalized,
+span.badge.Reconciled {
+  color: #16171A;
   background-color: #d6c2ff;
 }
 span.badge.Default {

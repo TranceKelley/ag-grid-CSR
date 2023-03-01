@@ -194,10 +194,10 @@ const App = () => {
                 menuTabs: ['filterMenuTab'],
                 chartDataType: 'series'
             },    
-            { field: 'TotalDue',
+            { field: 'CustomerPay',
                 cellStyle: { 
                     textAlign:'right', 
-                    maxWidth: 83,
+                    maxWidth: 100,
                     minWidth: 53,
                 },
                 filter: false,
@@ -400,7 +400,7 @@ const App = () => {
                 menuTabs: ['filterMenuTab'],
                 chartDataType: 'series'
             },    
-            { field: 'TotalDue',
+            { field: 'CustomerPay',
             hide:true,
                 cellStyle: { 
                     textAlign:'right', 
@@ -553,6 +553,7 @@ const App = () => {
                 },
             }
         ];
+        
     };
 
     const createCashierColDefs= () => {
@@ -575,7 +576,7 @@ const App = () => {
             { field: 'AppointmentDate', hide:false },
             { field: 'TransportationType', hide:false },
             { field: 'ApppointmentStatus', hide:false },
-            { field: 'TotalDue',
+            { field: 'CustomerPay',
                 cellStyle: { 
                     textAlign:'right', 
                     maxWidth: 83,
@@ -688,7 +689,7 @@ const App = () => {
             width: 250
         }],
         position: 'left',
-        defaultToolPanel: 'customStats'
+        defaultToolPanel: '[]'
     },
 
     function CustomStatsToolPanel(params) {
