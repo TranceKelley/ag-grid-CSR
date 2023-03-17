@@ -3,7 +3,7 @@ export function getData() {
     {
         "RONumber": "6478190",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Kiaan French",
         "Advisor": "Eric Sanders",
         "HangTag": "320",
@@ -33,7 +33,7 @@ export function getData() {
     {
         "RONumber": "6478191",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Gus Charlton",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",
@@ -64,7 +64,7 @@ export function getData() {
     {
         "RONumber": "6478192",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Yosef Henderson",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -95,7 +95,7 @@ export function getData() {
     {
         "RONumber": "6478193",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Aarron Bannister",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",
@@ -126,7 +126,7 @@ export function getData() {
     {
         "RONumber": "6478193",
         "Line Number": "2",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Aarron Bannister",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",
@@ -157,7 +157,7 @@ export function getData() {
     {
         "RONumber": "6478194",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Janelle Kirkpatrick",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -188,7 +188,7 @@ export function getData() {
     {
         "RONumber": "6478195",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Nelson Weber",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -219,7 +219,7 @@ export function getData() {
     {
         "RONumber": "6478196",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Shah Strickland",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -250,7 +250,7 @@ export function getData() {
     {
         "RONumber": "6478197",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Ikra Rich",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -281,7 +281,7 @@ export function getData() {
     {
         "RONumber": "6478198",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Dealer Vehicle",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -312,7 +312,7 @@ export function getData() {
     {
         "RONumber": "6478199",
         "Line Number": "1",
-        "ROStatus": "Pre Invoice",
+        "ROStatus": "Pre invoice",
         "CustomerName": "Jardel Wiley",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -343,7 +343,7 @@ export function getData() {
     {
         "RONumber": "6478200",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Suzanna Norris",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -375,7 +375,7 @@ export function getData() {
     {
         "RONumber": "6478201",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Arooj Case",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -407,7 +407,7 @@ export function getData() {
     {
         "RONumber": "6478202",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Ruth Eaton",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -439,7 +439,7 @@ export function getData() {
     {
         "RONumber": "6478203",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Kara Gould",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -470,7 +470,7 @@ export function getData() {
     {
         "RONumber": "6478204",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Bethanie Richardson",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",
@@ -502,7 +502,7 @@ export function getData() {
     {
         "RONumber": "6478205",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Milena Findlay",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -533,7 +533,7 @@ export function getData() {
     {
         "RONumber": "6478206",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Ashleigh Harding",
         "Advisor": "Taha Rodrigues",
         "PromisedDate": "5-Dec",
@@ -565,7 +565,7 @@ export function getData() {
     {
         "RONumber": "6478207",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Leigha Plant",
         "Advisor": "Taha Rodrigues",
         "PromisedDate": "5-Dec",
@@ -597,7 +597,7 @@ export function getData() {
     {
         "RONumber": "6478208",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Livia Munro",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -628,7 +628,7 @@ export function getData() {
     {
         "RONumber": "6478209",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Bobbie Hewitt",
         "Advisor": "Taha Rodrigues",
         "PromisedDate": "5-Dec",
@@ -659,7 +659,7 @@ export function getData() {
     {
         "RONumber": "6478210",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Rhona Bray",
         "Advisor": "Taha Rodrigues",
         "PromisedDate": "5-Dec",
@@ -690,7 +690,7 @@ export function getData() {
     {
         "RONumber": "6478211",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Varun Gordon",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -721,7 +721,7 @@ export function getData() {
     {
         "RONumber": "6478212",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Kathleen Jacobson",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -753,7 +753,7 @@ export function getData() {
     {
         "RONumber": "6478213",
         "Line Number": "1",
-        "ROStatus": "Cashier",
+        "ROStatus": "Work finished",
         "CustomerName": "Lisa-Marie Burgess",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",
@@ -784,7 +784,7 @@ export function getData() {
     {
         "RONumber": "6478214",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Dealer Vehicle",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -815,7 +815,7 @@ export function getData() {
     {
         "RONumber": "6478215",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Vivek Martin",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -846,7 +846,7 @@ export function getData() {
     {
         "RONumber": "6478216",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Nahla Wilks",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -877,7 +877,7 @@ export function getData() {
     {
         "RONumber": "6478217",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Luella Goodman",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -908,7 +908,7 @@ export function getData() {
     {
         "RONumber": "6478218",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Prince Beltran",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -939,7 +939,7 @@ export function getData() {
     {
         "RONumber": "6478219",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Maison Driscoll",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -970,7 +970,7 @@ export function getData() {
     {
         "RONumber": "6478220",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Subhan Golden",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -1001,7 +1001,7 @@ export function getData() {
     {
         "RONumber": "6478221",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Marcus North",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -1032,7 +1032,7 @@ export function getData() {
     {
         "RONumber": "6478222",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Lewis Dillon",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -1063,7 +1063,7 @@ export function getData() {
     {
         "RONumber": "6478223",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Dealer Vehicle",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -1094,7 +1094,7 @@ export function getData() {
     {
         "RONumber": "6478224",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Mehdi Cox",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -1125,7 +1125,7 @@ export function getData() {
     {
         "RONumber": "6478225",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Casper Mcfarlane",
         "Advisor": "Eliza George",
         "PromisedDate": "5-Dec",
@@ -1156,7 +1156,7 @@ export function getData() {
     {
         "RONumber": "6478226",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Camron Bryant",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -1187,7 +1187,7 @@ export function getData() {
     {
         "RONumber": "6478227",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Yousef Romero",
         "Advisor": "Latisha Wyatt",
         "PromisedDate": "5-Dec",
@@ -1218,7 +1218,7 @@ export function getData() {
     {
         "RONumber": "6478228",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Matthew Greenaway",
         "Advisor": "King Villanueva",
         "PromisedDate": "5-Dec",
@@ -1250,7 +1250,7 @@ export function getData() {
     {
         "RONumber": "6478229",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Mylah Sharpe",
         "Advisor": "Eric Sanders",
         "PromisedDate": "5-Dec",
@@ -1281,7 +1281,7 @@ export function getData() {
     {
         "RONumber": "6478230",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Kaira Gentry",
         "Advisor": "Taha Rodrigues",
         "PromisedDate": "5-Dec",
@@ -1312,7 +1312,7 @@ export function getData() {
     {
         "RONumber": "6478231",
         "Line Number": "1",
-        "ROStatus": "In Process",
+        "ROStatus": "In process",
         "CustomerName": "Xena Higgins",
         "Advisor": "Susan Barber",
         "PromisedDate": "5-Dec",

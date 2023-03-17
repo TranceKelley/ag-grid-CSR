@@ -69,8 +69,8 @@ span.badge {
 }
 
 span.badge.InProgress,
+span.badge.Inprocess,
 span.badge.PreInvoice,
-span.badge.InProcess,
 span.badge.Working,
 span.badge.Paid,
 span.badge.WorkFinished,
@@ -95,6 +95,11 @@ span.badge.WithAdvisor {
 span.badge.Discrepancy {
   color: black;
   background-color: #ff7575;
+}
+
+span.badge.Workfinished {
+  color: black;
+  background-color: #C2FFBD;
 }
 
 span.badge.Rejected {
