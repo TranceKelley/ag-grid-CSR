@@ -31,6 +31,12 @@ const App = () => {
         suppressClickEdit: true,
     };
 
+    let columnApi;
+
+    const onGridReady = (params) => {
+      columnApi = params.columnApi;
+    };
+
     const gridOptions = {
         //columnDefs: columnDefs,
         defaultColDef: defaultColDef,
@@ -849,6 +855,7 @@ return (
           tooltipShowDelay={0}
           tooltipHideDelay={2000}
           groupRowsSticky={true}
+          onGridReady={onGridReady}
           >
           </AgGridReact>
           </div>
