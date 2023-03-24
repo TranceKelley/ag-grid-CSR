@@ -35,6 +35,7 @@ const App = () => {
 
     const onGridReady = (params) => {
       columnApi = params.columnApi;
+      gridRef.current.api.expandAll();
     };
 
     const gridOptions = {
@@ -45,8 +46,7 @@ const App = () => {
             cellRendererPerams: {
                 suppressCount: true,
             }
-
-        }
+        },
     };
 
     const PullUpRO = () => {
@@ -106,6 +106,7 @@ const App = () => {
                 cellRenderer: AllStatus, 
                 tooltipComponent: StatusTooltip,
                 tooltipValueGetter: toolTipValueGetter,
+                rowGroup: true,
             },
             { field: 'CustomerName', 
                 headerName: 'Customer', 
@@ -631,7 +632,8 @@ const App = () => {
     }, []);
 
     const onROView = useCallback(() => {
-        gridRef.current.api.setColumnDefs(createROColDefs());
+        gridRef.current.api.setColumnDefs(createROColDefs())
+        gridRef.current.api.expandAll();;
     }, []);
 
     const onCashierView = useCallback(() => {
