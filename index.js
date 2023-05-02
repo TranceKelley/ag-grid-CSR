@@ -106,7 +106,6 @@ const App = () => {
                 cellRenderer: AllStatus, 
                 tooltipComponent: StatusTooltip,
                 tooltipValueGetter: toolTipValueGetter,
-                rowGroup: true,
             },
             { field: 'CustomerName', 
                 headerName: 'Customer', 
