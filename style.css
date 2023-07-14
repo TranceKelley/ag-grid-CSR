@@ -75,16 +75,15 @@ span.badge.Working,
 span.badge.Paid,
 span.badge.WorkFinished,
 span.badge.SubmitedtoOEM,
-span.badge.CheckedIn  {
-  color: #16171A;
-  background-color: #83F279;
+span.badge.CheckedIn {
+  color: #16171a;
+  background-color: #83f279;
 }
 
 span.badge.Corrected {
   color: white;
   background-color: #1a5915;
 }
-
 
 span.badge.Viewed,
 span.badge.WithAdvisor {
@@ -99,7 +98,7 @@ span.badge.Discrepancy {
 
 span.badge.Workfinished {
   color: black;
-  background-color: #C2FFBD;
+  background-color: #c2ffbd;
 }
 
 span.badge.Rejected {
@@ -121,7 +120,7 @@ span.badge.Returned {
 span.badge.Completed,
 span.badge.Finalized,
 span.badge.Reconciled {
-  color: #16171A;
+  color: #16171a;
   background-color: #d6c2ff;
 }
 span.badge.Default {
@@ -274,4 +273,10 @@ span.badge.Default {
   background-image: url(https://raw.githubusercontent.com/TranceKelley/myImages/main/ModalVehicleInfo.png);
   display: block;
   backdrop-filter: blur(3px);
+}
+
+.ag-theme-alpine {
+  --ag-header-background-color: #e4e9ef;
+  --ag-row-hover-color: #f5f6f7;
+  --ag-odd-row-background-color: #fafafa;
 }
