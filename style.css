@@ -288,4 +288,6 @@ span.badge.Default {
   --ag-alpine-active-color: #2b6bdd;
   --ag-control-panel-background-color: #fafafa;
   --ag-selected-tab-underline-color: #2b6bdd;
+  --ag-input-focus-border-color: #2b6bdd;
+  --ag-input-focus-box-shadow: none;
 }
