@@ -279,4 +279,13 @@ span.badge.Default {
   --ag-header-background-color: #e4e9ef;
   --ag-row-hover-color: #f5f6f7;
   --ag-odd-row-background-color: #fafafa;
+  --ag-border-color: #b2b6bf;
+  --ag-row-border-color: #cacfd9;
+
+  --ag-checkbox-checked-color: #2b6bdd;
+  --ag-checkbox-unchecked-color: #cacfd9;
+
+  --ag-alpine-active-color: #2b6bdd;
+  --ag-control-panel-background-color: #fafafa;
+  --ag-selected-tab-underline-color: #2b6bdd;
 }
