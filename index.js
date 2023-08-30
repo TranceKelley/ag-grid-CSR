@@ -568,11 +568,15 @@ const App = () => {
                 hide:false,
                 cellStyle: { color: '#2B6BDD' },
                 pinned: 'left',
-                maxWidth: 100,
+                maxWidth: 120,
                 minWidth: 100, 
                 lockPinned: true,
                 filter: 'agTextColumnFilter',
                 menuTabs: ['filterMenuTab']
+            },
+            { field: 'PaymentStatus', 
+                hide:false,
+                cellRenderer: AllStatus 
             },
             { field: 'AppointmentTime', hide:false  },
             { field: 'AppointmentDate', hide:false },
