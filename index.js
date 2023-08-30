@@ -574,10 +574,6 @@ const App = () => {
                 filter: 'agTextColumnFilter',
                 menuTabs: ['filterMenuTab']
             },
-            { field: 'Payment Status', 
-                hide:false,
-                cellRenderer: AllStatus 
-            },
             { field: 'AppointmentTime', hide:false  },
             { field: 'AppointmentDate', hide:false },
             { field: 'TransportationType', hide:false },
