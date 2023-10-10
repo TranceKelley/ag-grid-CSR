@@ -69,7 +69,6 @@ span.badge {
 }
 
 span.badge.InProgress,
-span.badge.Inprocess,
 span.badge.PreInvoice,
 span.badge.Working,
 span.badge.Paid,
@@ -77,7 +76,7 @@ span.badge.WorkFinished,
 span.badge.SubmitedtoOEM,
 span.badge.CheckedIn {
   color: #16171a;
-  background-color: #83f279;
+  background-color: #ffd6c2;
 }
 
 span.badge.Corrected {
@@ -85,10 +84,13 @@ span.badge.Corrected {
   background-color: #1a5915;
 }
 
-span.badge.Viewed,
-span.badge.WithAdvisor {
+span.badge.InProcess{
   color: black;
-  background-color: #ffa87d;
+  background-color: #e3edff;
+}
+span.badge.Viewed{
+  color: black;
+  background-color: #e3edff;
 }
 
 span.badge.Discrepancy {

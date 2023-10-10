@@ -192,14 +192,24 @@ const App = () => {
             { field: 'PayType', 
                 headerName: 'Pay',
                 resizable: false, 
-                maxWidth: 60, 
+                maxWidth: 80, 
                 cellStyle: { 
                     align: 'center' 
                 }, 
                 filter: 'agSetColumnFilter',
                 menuTabs: ['filterMenuTab'],
                 chartDataType: 'series'
-            },    
+            },  
+            { field: 'Service Type', 
+                headerName: 'Type',
+                maxWidth: 200, 
+                cellStyle: { 
+                    align: 'center' 
+                }, 
+                filter: 'agSetColumnFilter',
+                menuTabs: ['filterMenuTab'],
+                chartDataType: 'series'
+            },  
             { field: 'CustomerPay',
                 cellStyle: { 
                     textAlign:'right', 
